@@ -7,50 +7,8 @@ on:
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest
-    env:
-      DOTNET_VERSION: "10.0.x"
-
-    steps:
-      - uses: actions/checkout@v4
-
-      - uses: actions/setup-dotnet@v4
-        with:
-          dotnet-version: ${{ env.DOTNET_VERSION }}
-
-      - name: Configure NuGet credentials
-        run: |
-          dotnet nuget add source https://nuget.pkg.github.com/PatrickSchop/index.json \
-            --name github \
-            --username PatrickSchop \
-            --password ${{ secrets.GITHUB_TOKEN }} \
-            --store-password-in-clear-text
-
-      - run: dotnet restore
-
-      - run: dotnet build -c Release --no-restore
-
-      - run: dotnet test -c Release --no-build
-
-      - run: |
-          dotnet publish ScratchApp.csproj \
-            -c Release \
-            -o ${{ runner.temp }}/publish
-
-      # Dev-only settings must never ship; production config comes from Function App
-      # settings (see infra/app.bicep in the AppPlatform repo), not this file.
-      - run: rm -f ${{ runner.temp }}/publish/appsettings.development.json
-
-      # Azure resources (Function App, database, storage, managed identity) are provisioned
-      # separately via infra/app.bicep in the AppPlatform repo — see docs/provisioning.md.
-      # This workflow only builds and deploys application code using the publish profile.
-      - uses: Azure/functions-action@v1
-        with:
-          app-name: scratchapp-api
-          package: ${{ runner.temp }}/publish
-          publish-profile: ${{ secrets.AZURE_PUBLISH_PROFILE }}
-
-      # TODO (Step 21): add a migration step here (`dotnet run -- --migrate`), with the SQL
-      # firewall dance (open the runner's IP, migrate, remove the rule in an `if: always()`
-      # step) and a decision on OIDC vs long-lived credentials. Not done yet — see
-      # step-21-reusable-workflows.md. Until then, run migrations manually after deploy.
+    uses: PatrickSchop/AppPlatform/.github/workflows/app-deploy.yaml@main
+    with:
+      app-name: scratchapp-api
+    secrets:
+      AZURE_PUBLISH_PROFILE: ${{ secrets.AZURE_PUBLISH_PROFILE }}
