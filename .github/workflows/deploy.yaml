@@ -18,9 +18,15 @@ jobs:
         with:
           dotnet-version: ${{ env.DOTNET_VERSION }}
 
+      - name: Configure NuGet credentials
+        run: |
+          dotnet nuget add source https://nuget.pkg.github.com/PatrickSchop/index.json \
+            --name github \
+            --username PatrickSchop \
+            --password ${{ secrets.GITHUB_TOKEN }} \
+            --store-password-in-clear-text
+
       - run: dotnet restore
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - run: dotnet build -c Release --no-restore
 
