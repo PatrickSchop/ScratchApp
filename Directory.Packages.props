@@ -5,8 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup Label="Platform">
-    <PackageVersion Include="PS.AppPlatform" Version="0.1.0-local" />
-    <PackageVersion Include="PS.AppPlatform.Functions" Version="0.1.0-local" />
+    <PackageVersion Include="PS.AppPlatform" Version="0.1.0" />
+    <PackageVersion Include="PS.AppPlatform.Functions" Version="0.1.0" />
   </ItemGroup>
 
   <ItemGroup Label="Azure Functions">
