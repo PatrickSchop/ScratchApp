@@ -1,0 +1,263 @@
+[
+  {
+    "name": "GetNotificationTasks",
+    "scriptFile": "ScratchApp.dll",
+    "entryPoint": "PS.AppPlatform.Generated.BackgroundTaskFunctions.GetNotifications",
+    "language": "dotnet-isolated",
+    "properties": {
+      "IsCodeless": false
+    },
+    "bindings": [
+      {
+        "name": "req",
+        "direction": "In",
+        "type": "httpTrigger",
+        "authLevel": "Anonymous",
+        "methods": [
+          "get"
+        ],
+        "route": "api/tasks/notifications",
+        "properties": {}
+      },
+      {
+        "name": "$return",
+        "type": "http",
+        "direction": "Out"
+      }
+    ]
+  },
+  {
+    "name": "GetTasks",
+    "scriptFile": "ScratchApp.dll",
+    "entryPoint": "PS.AppPlatform.Generated.BackgroundTaskFunctions.GetAll",
+    "language": "dotnet-isolated",
+    "properties": {
+      "IsCodeless": false
+    },
+    "bindings": [
+      {
+        "name": "req",
+        "direction": "In",
+        "type": "httpTrigger",
+        "authLevel": "Anonymous",
+        "methods": [
+          "get"
+        ],
+        "route": "api/tasks",
+        "properties": {}
+      },
+      {
+        "name": "$return",
+        "type": "http",
+        "direction": "Out"
+      }
+    ]
+  },
+  {
+    "name": "CreateTask",
+    "scriptFile": "ScratchApp.dll",
+    "entryPoint": "PS.AppPlatform.Generated.BackgroundTaskFunctions.Create",
+    "language": "dotnet-isolated",
+    "properties": {
+      "IsCodeless": false
+    },
+    "bindings": [
+      {
+        "name": "req",
+        "direction": "In",
+        "type": "httpTrigger",
+        "authLevel": "Anonymous",
+        "methods": [
+          "post"
+        ],
+        "route": "api/tasks",
+        "properties": {}
+      },
+      {
+        "name": "$return",
+        "type": "http",
+        "direction": "Out"
+      }
+    ]
+  },
+  {
+    "name": "GetTaskStatus",
+    "scriptFile": "ScratchApp.dll",
+    "entryPoint": "PS.AppPlatform.Generated.BackgroundTaskFunctions.GetById",
+    "language": "dotnet-isolated",
+    "properties": {
+      "IsCodeless": false
+    },
+    "bindings": [
+      {
+        "name": "req",
+        "direction": "In",
+        "type": "httpTrigger",
+        "authLevel": "Anonymous",
+        "methods": [
+          "get"
+        ],
+        "route": "api/tasks/{id}",
+        "properties": {}
+      },
+      {
+        "name": "$return",
+        "type": "http",
+        "direction": "Out"
+      }
+    ]
+  },
+  {
+    "name": "CheckTasks",
+    "scriptFile": "ScratchApp.dll",
+    "entryPoint": "PS.AppPlatform.Generated.BackgroundTaskFunctions.Check",
+    "language": "dotnet-isolated",
+    "properties": {
+      "IsCodeless": false
+    },
+    "bindings": [
+      {
+        "name": "req",
+        "direction": "In",
+        "type": "httpTrigger",
+        "authLevel": "Anonymous",
+        "methods": [
+          "post"
+        ],
+        "route": "api/tasks/check",
+        "properties": {}
+      },
+      {
+        "name": "$return",
+        "type": "http",
+        "direction": "Out"
+      }
+    ]
+  },
+  {
+    "name": "GetWebAppConfiguration",
+    "scriptFile": "ScratchApp.dll",
+    "entryPoint": "PS.AppPlatform.Generated.ConfigurationFunctions.GetConfiguration",
+    "language": "dotnet-isolated",
+    "properties": {
+      "IsCodeless": false
+    },
+    "bindings": [
+      {
+        "name": "req",
+        "direction": "In",
+        "type": "httpTrigger",
+        "authLevel": "Anonymous",
+        "methods": [
+          "get"
+        ],
+        "route": "configuration.json",
+        "properties": {}
+      },
+      {
+        "name": "$return",
+        "type": "http",
+        "direction": "Out"
+      }
+    ]
+  },
+  {
+    "name": "InitializeDatabase",
+    "scriptFile": "ScratchApp.dll",
+    "entryPoint": "PS.AppPlatform.Generated.DatabaseFunctions.Initialize",
+    "language": "dotnet-isolated",
+    "properties": {
+      "IsCodeless": false
+    },
+    "bindings": [
+      {
+        "name": "req",
+        "direction": "In",
+        "type": "httpTrigger",
+        "authLevel": "Anonymous",
+        "methods": [
+          "post"
+        ],
+        "route": "api/initializeDatabase",
+        "properties": {}
+      },
+      {
+        "name": "$return",
+        "type": "http",
+        "direction": "Out"
+      }
+    ]
+  },
+  {
+    "name": "GetHealth",
+    "scriptFile": "ScratchApp.dll",
+    "entryPoint": "PS.AppPlatform.Generated.HealthFunctions.GetHealth",
+    "language": "dotnet-isolated",
+    "properties": {
+      "IsCodeless": false
+    },
+    "bindings": [
+      {
+        "name": "req",
+        "direction": "In",
+        "type": "httpTrigger",
+        "authLevel": "Anonymous",
+        "methods": [
+          "get"
+        ],
+        "route": "api/health",
+        "properties": {}
+      },
+      {
+        "name": "$return",
+        "type": "http",
+        "direction": "Out"
+      }
+    ]
+  },
+  {
+    "name": "StaticContent",
+    "scriptFile": "ScratchApp.dll",
+    "entryPoint": "PS.AppPlatform.Generated.StaticContentFunctions.Run",
+    "language": "dotnet-isolated",
+    "properties": {
+      "IsCodeless": false
+    },
+    "bindings": [
+      {
+        "name": "req",
+        "direction": "In",
+        "type": "httpTrigger",
+        "authLevel": "Anonymous",
+        "methods": [
+          "get"
+        ],
+        "route": "{*path}",
+        "properties": {}
+      },
+      {
+        "name": "$return",
+        "type": "http",
+        "direction": "Out"
+      }
+    ]
+  },
+  {
+    "name": "ScheduledTaskCheck",
+    "scriptFile": "ScratchApp.dll",
+    "entryPoint": "PS.AppPlatform.Generated.TaskSchedulerFunctions.Run",
+    "language": "dotnet-isolated",
+    "properties": {
+      "IsCodeless": false
+    },
+    "bindings": [
+      {
+        "name": "timer",
+        "direction": "In",
+        "type": "timerTrigger",
+        "schedule": "%backgroundTasks:checkSchedule%",
+        "properties": {}
+      }
+    ]
+  }
+]

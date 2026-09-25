@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <Import Project="$(NuGetPackageRoot)ps.appplatform.functions\0.1.0-local\build\PS.AppPlatform.Functions.targets" Condition="Exists('$(NuGetPackageRoot)ps.appplatform.functions\0.1.0-local\build\PS.AppPlatform.Functions.targets')" />
+    <Import Project="$(NuGetPackageRoot)microsoft.azure.functions.worker.sdk\2.0.7\build\Microsoft.Azure.Functions.Worker.Sdk.targets" Condition="Exists('$(NuGetPackageRoot)microsoft.azure.functions.worker.sdk\2.0.7\build\Microsoft.Azure.Functions.Worker.Sdk.targets')" />
+  </ImportGroup>
+</Project>
